@@ -1,0 +1,34 @@
+#text{
+    text-align: center;
+}
+#container{
+    width: auto;
+    height: 80vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+.hole{
+    height: 30px;
+    width: 150px;
+    position: relative;
+    background-color: blue;
+    margin-right: 7rem;
+}
+.mole{
+    height: 75px;
+    width: 75px;
+    position: absolute;
+    top:30px;
+    left: 35px;
+    background-color: chartreuse;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+/* D6 - What selector is this  */
+.hole.up .mole{ 
+    top:-75px;
+}

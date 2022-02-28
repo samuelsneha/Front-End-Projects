@@ -1,0 +1,126 @@
+<div id="outer">
+    <div class="button colored" data-value="AC">AC</div>
+    <div class="button colored" data-value="+/-">+/-</div>
+    <div class="button colored" data-value="%">%</div>
+    <div class="button colored" data-value="/">/</div>
+
+    <div class="button colored" data-value="7">7</div>
+    <div class="button colored" data-value="8">8</div>
+    <div class="button colored" data-value="9">9</div>
+    <div class="button colored" data-value="*">*</div>
+
+    <div class="button colored" data-value="4">4</div>
+    <div class="button colored" data-value="5">5</div>
+    <div class="button colored" data-value="6">6</div>
+    <div class="button colored" data-value="-">-</div>
+
+    <div class="button colored" data-value="1">1</div>
+    <div class="button colored" data-value="2">2</div>
+    <div class="button colored" data-value="3">3</div>
+    <div class="button colored" data-value="+">+</div>
+
+    <div id="double" class="button colored" data-value="0">0</div>
+    <div class="button colored" data-value=".">.</div>
+    <div class="button colored" data-value="=">=</div>
+
+</div>
+
+
+
+if( op1 == null && op2 == null && oprButtonsKey == undefined && a.textContent == "" ){ //CC-1 
+    a.textContent = 0;
+} 
+else if( a.textContent == ""){ //CC-2
+    alert('Enter second operand');
+}
+ else if( oprButtonsKey == undefined){ //CC-3
+     a.textContent = a.textContent;
+ }  
+op2 = parseFloat(a.textContent);
+if( value == "/" || value == "%" && op2 == 0  ){ // CC-4
+    alert('Invalid operation');
+         op1 = null;
+         op2 = null;
+         a.textContent="";
+}
+else{
+var result = eval( op1+ oprButtonsKey + op2 );
+a.textContent = parseFloat(result);
+op1 = null;//for the next operation
+op2 = null;
+}
+
+
+
+
+///KEYBOARD EVENTS
+ //see for keyboard events, we cant access whatever we typed through html the way we did in mouse click events using .getE... elements and .innerhtml
+ //here in keyboard events, first to identify which key has been pressed we do the .key function.
+ //then once we identify which key has been pressed, we check it with the arrays we created. 
+ //then after this we can access html elements like display the way we do in mouseclick events.  
+ //in mouseclick events, we did by creating classes and taking their values. 
+ document.addEventListener("keydown", function(event){
+      //this event and the events above are different. Like this event will work only between the { } of this.
+      //you can give other names also to events like abc instead of event and then it should be abc.key in the next line. 
+      var value=event.key;// to identify which key user has typed
+     // value=String.fromCharCode(value);//converts all num,alpha, char to string
+      //console.log(value);
+      if(!numButtonsKey.includes (value) && !oprButtonsKey.includes(value) && !equalButtonKey.includes(value) ){
+          alert('Enter valid Key');
+      }     
+      else if (numButtonsKey.includes (value)) {
+      a.textContent = (a.textContent) +  ( value);
+
+      }
+      else if (oprButtonsKey.includes(value)){
+        if( ! op1){//this we are doing coz null in js is false. So !false is true. So it will perform only if op1 is null coz we dont want to perform any operation on null. 
+            op1 = a.textContent;
+        }
+        else{// coz op1 is not null which means its not the first perand so we are performing operations on them
+            op1 = eval (op1 + value + (a.textContent));
+        }
+         a.textContent = "";
+      }
+      else if (event.key == "=" ){
+        console.log(value);  
+        op2 = parseFloat(a.textContent);  
+        var result = eval( op1+ value + op2 );
+        a.textContent = parseFloat(result);
+        op1 = null;//for the next operation
+        op2 = null;
+        console.log('hello');
+      }
+      else if(signedButtonKey.includes(value)){
+        
+      }
+      else if(dotButtonKey.includes(value)){
+        
+      }
+      else
+          a.textContent = "";
+          
+});
+
+
+
+
+
+var opp1;
+var operatorKey;
+var opp2;
+if(event.key == "."){
+    document.getElementById('display-box').innerText = document.getElementById('display-box').innerText + event.key;
+ } 
+if( event.key == "+"){
+     opp1 = document.getElementById('display-box').innerText;
+     operatorKey = event.key;
+     document.getElementById('display-box').innerText = "";
+}
+if (event.key == "="){
+    opp2 =  document.getElementById('display-box').innerText;
+    var final = eval(opp1 + operatorKey + opp2);
+    document.getElementById('display-box').innerText = final;
+}
+if (event.key == "Escape"){
+    document.getElementById('display-box').innerText = "";
+}

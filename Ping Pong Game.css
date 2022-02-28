@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+    margin: 0;
+}
+#lrod{
+    width: 1.8rem;
+    height: 9rem;
+    background-color: wheat;
+    position: absolute;
+    top: 18rem;
+    left: 0rem;
+}
+#rrod{
+    width: 1.8rem;
+    height: 9rem;
+    background-color: wheat;
+    position: absolute;
+    top: 18rem;
+    left: 83.5rem;
+}
+#ball{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    position: absolute;
+    top:18rem;
+    left: 41rem;
+    background-color: tomato;
+}
+#p1-text{
+    position: absolute;
+    top: 1;
+    left: 25rem;
+    color: whitesmoke;
+    font-size: 2rem;
+}
+#p2-text{
+    position: absolute;
+    top: 1;
+    left: 55rem;
+    color: whitesmoke;
+    font-size: 2rem;
+}
